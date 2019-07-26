@@ -35,7 +35,7 @@
         <title>ANTARD</title>
     </head>
     <body>
-         <nav id="mainNav" class="navbar navbar-expand-md navbar-dark fixed-top shrink">
+         <nav id="mainNav" class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top">
           <div class="container">
            <button class="navbar-toggler" data-toggle="collapse" data-target="#nvbCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -46,16 +46,16 @@
            <div class="collapse navbar-collapse" id="nvbCollapse">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#headerSection" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Portfolio</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Team</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Testimonial</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Client</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#service" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="#ourteam" class="nav-link">Team</a></li>
+                <li class="nav-item"><a href="#ourpricing" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonial</a></li>
+                <li class="nav-item"><a href="#ourblog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#ourclient" class="nav-link">Client</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
            </div>
           </div>
@@ -741,43 +741,21 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="js/lightcase.js"></script>
-        <script src="dist/js/swiper.min.js"></script>
-        <script src="js/custom.js"></script>
-        <script src="js/custom2.js"></script>
+        <script src="dist/js/swiper.min.js"></script>  
+        <script src="dist/js/smooth-scroll.min.js"></script>  
+		<script>
+	var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
+
         <script>
 
-	// filter functions
-	var filterFns = {
-	  // show if number is greater than 50
-	  numberGreaterThan50: function() {
-		var number = $(this).find('.number').text();
-		return parseInt( number, 10 ) > 50;
-	  },
-	  // show if name ends with -ium
-	  ium: function() {
-		var name = $(this).find('.name').text();
-		return name.match( /ium$/ );
-	  }
-	};
-
-	// bind filter button click
-	$('.portfolio-menu').on( 'click', 'li', function() {
-	  var filterValue = $( this ).attr('data-filter');
-	  // use filterFn if matches value
-	  filterValue = filterFns[ filterValue ] || filterValue;
-	  $gellary_img.isotope({ filter: filterValue });
-	});
-
-
-
-	// change is-checked class on buttons
-	$('.portfolio-menu').each( function( i, liList ) {
-	  var $liList = $( liList );
-	  $liList.on( 'click', 'li ', function() {
-		$liList.find('.active').removeClass('active');
-		$( this ).addClass('active');
-	  });
-	});	
+	$(window).scroll(function() {
+	if($(document).scrollTop() > 50){
+		$('nav').addClass('shrink');
+	}else{
+		$('nav').removeClass('shrink');
+	}
+});
             
     $('a[data-rel^=lightcase]').lightcase();
 	//Client Slider
